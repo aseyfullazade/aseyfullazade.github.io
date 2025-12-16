@@ -1,118 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About — Ali Seyfullazade</title>
-  <style>
-    /* Copied main styles to keep header/nav/fonts/colors consistent with home */
-    :root{
-      --bg:#06070a; /* very dark */
-      --panel:#0f1720;
-      --text:#ffffff;
-      --muted:#99a3b2;
-      --accent:#2b8cff;
-      --gap:24px;
-      --radius:12px;
-      --max-width:1100px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
-    body{
-      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background:linear-gradient(180deg,var(--bg),#0b0f14);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-    header{width:100%;padding:18px calc(12px + 2vw);position:sticky;top:0;backdrop-filter:blur(6px);z-index:50;display:flex;align-items:center;justify-content:center}
-    .nav-wrap{max-width:var(--max-width);width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--gap)}
-    .brand{display:flex;align-items:center;gap:12px}
-    .avatar{width:72px;height:72px;border-radius:50%;display:inline-grid;place-items:center;background:linear-gradient(135deg,#0b1220,#17212b);color:var(--text);font-weight:700;flex:0 0 72px;box-shadow:0 8px 26px rgba(10,12,20,.6);overflow:hidden}
-    .avatar-img{width:100%;height:100%;object-fit:cover;display:block}
-    .name{font-weight:700;font-size:16px;color:var(--text)}
-    .role{font-size:12px;color:var(--muted)}
-    nav ul{display:flex;gap:10px;margin:0;padding:0;list-style:none}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;display:inline-block;transition:transform .18s cubic-bezier(.2,.9,.3,1),color .12s;}
-    nav a:hover, nav a:focus{color:var(--text);transform:translateY(-3px);background:rgba(255,255,255,0.02)}
-    @keyframes nav-pop{0%{transform:scale(1)}40%{transform:scale(1.14)}70%{transform:scale(.97)}100%{transform:scale(1)}}
-    .nav-btn.pop{animation:nav-pop .36s cubic-bezier(.2,1,.3,1)}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Ali Seyfullazade</title>
+<style>
+:root{
+  --bg:#06070a;
+  --text:#ffffff;
+  --muted:#99a3b2;
+  --accent:#2b8cff;
+  --gap:24px;
+  --radius:12px;
+  --max-width:1100px;
+}
 
-    /* Page content styles */
-    .wrap{min-height:calc(100vh - 140px);display:flex;align-items:center;justify-content:center;padding:48px}
-    .card{max-width:900px;background:rgba(255,255,255,0.02);padding:36px;border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,0.6)}
-    h1{margin:0 0 12px;font-size:28px}
-    p{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 12px}
-    .certs{margin-top:18px}
-    .certs h3{margin:0 0 8px;font-size:16px;color:var(--text)}
-    .cert-list{display:flex;flex-direction:column;gap:8px}
-    .cert{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:10px 14px;border-radius:8px;color:var(--text);font-weight:600}
-    .home-link{display:inline-block;margin-top:18px;color:var(--accent);text-decoration:none;font-weight:700}
-    .home-link:hover{text-decoration:underline}
-    @media (max-width:720px){.card{padding:20px}}
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,var(--bg),#0b0f14);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5;}
 
-    /* Page transition states (same as home) */
-    body.page-enter{opacity:0;transform:translateY(8px)}
-    body.page-enter-active{transition:opacity .48s cubic-bezier(.2,.9,.3,1),transform .48s cubic-bezier(.2,.9,.3,1);opacity:1;transform:translateY(0)}
-    body.page-exit-active{transition:opacity .38s ease,transform .38s ease;opacity:0;transform:translateY(-6px)}
-  </style>
+header{
+  width:100%;padding:18px 16px;position:sticky;top:0;backdrop-filter:blur(6px);z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+}
+
+.nav-wrap{max-width:var(--max-width);width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--gap);}
+.brand{display:flex;align-items:center;gap:12px;}
+.avatar{width:64px;height:64px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,#0b1220,#17212b);}
+.avatar-img{width:100%;height:100%;object-fit:cover;display:block;}
+.name{font-weight:700;font-size:clamp(14px,2vw,18px);}
+.role{font-size:clamp(10px,2vw,14px);color:var(--muted);}
+
+nav ul{display:flex;gap:12px;margin:0;padding:0;list-style:none;}
+nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;font-size:clamp(12px,2vw,14px);transition:transform .18s,color .12s;}
+nav a:hover, nav a:focus{color:var(--text);transform:translateY(-3px);background:rgba(255,255,255,0.02);}
+
+/* Hamburger for mobile */
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;}
+.hamburger div{width:24px;height:3px;background:var(--text);border-radius:2px;}
+
+/* Main content */
+.wrap{min-height:calc(100vh - 120px);display:flex;align-items:center;justify-content:center;padding:32px;}
+.card{max-width:900px;background:rgba(255,255,255,0.02);padding:36px;border-radius:var(--radius);box-shadow:0 12px 40px rgba(2,6,23,0.6);}
+h1{margin:0 0 16px;font-size:clamp(22px,5vw,28px);}
+p{color:var(--muted);font-size:clamp(14px,3vw,16px);line-height:1.6;margin:0 0 12px;}
+
+.certs{margin-top:24px;}
+.certs h3{margin:0 0 8px;font-size:16px;color:var(--text);}
+.cert-list{display:flex;flex-direction:column;gap:8px;}
+.cert{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:10px 14px;border-radius:8px;color:var(--text);font-weight:600;}
+
+.home-link{display:inline-block;margin-top:18px;color:var(--accent);text-decoration:none;font-weight:700;}
+.home-link:hover{text-decoration:underline;}
+
+/* Responsive adjustments */
+@media(max-width:768px){
+  header{padding:12px 16px;}
+  nav ul{display:none;flex-direction:column;width:100%;gap:8px;margin-top:8px;background:rgba(6,7,10,0.95);border-radius:8px;position:absolute;top:72px;right:16px;padding:12px;}
+  nav ul.show{display:flex;}
+  .hamburger{display:flex;}
+  .wrap{padding:16px;}
+  .card{padding:24px;}
+}
+</style>
 </head>
 <body>
-  <!-- same header/nav as home -->
-  <header>
-    <div class="nav-wrap">
-      <div class="brand">
-        <div class="avatar"><img src="picture.jpg" alt="Ali Seyfullazade" class="avatar-img"></div>
-        <div>
-          <div class="name">Ali Seyfullazade</div>
-          <div class="role">Cybersecurity Engineer</div>
-        </div>
+
+<header>
+  <div class="nav-wrap">
+    <div class="brand">
+      <div class="avatar"><img src="picture.jpg" alt="Ali Seyfullazade" class="avatar-img"></div>
+      <div>
+        <div class="name">Ali Seyfullazade</div>
+        <div class="role">Cybersecurity Engineer</div>
       </div>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a class="nav-btn" href="index.html">Home</a></li>
-          <li><a class="nav-btn" href="about.html">About</a></li>
-          <li><a class="nav-btn" href="projects.html">Projects</a></li>
-        </ul>
-      </nav>
     </div>
-  </header>
 
-  <div class="wrap">
-    <div class="card" role="main">
-      <h1>About</h1>
-      <p>Hi, I’m a Cybersecurity Engineer passionate about keeping systems secure and people safe online. I enjoy breaking down complex security problems and turning them into practical, effective solutions.</p>
-      <p>I’m especially interested in how attackers think, how systems fail, and how strong security design can prevent incidents before they happen. Outside of work, I like learning about new security tools, staying up to date with cyber threats, and improving my skills.</p>
+    <div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
 
-      <div class="certs" aria-labelledby="certs-heading">
-        <h3 id="certs-heading">Certificates</h3>
-        <div class="cert-list">
-          <div class="cert">CCNA — Introduction to Networking</div>
-          <div class="cert">CompTIA A+ (Cyber)</div>
-        </div>
-      </div>
-
-      <a class="home-link" href="index.html">← Back to Home</a>
-    </div>
+    <nav aria-label="Primary">
+      <ul id="nav-links">
+        <li><a class="nav-btn" href="index.html">Home</a></li>
+        <li><a class="nav-btn" href="about.html">About</a></li>
+        <li><a class="nav-btn" href="projects.html">Projects</a></li>
+      </ul>
+    </nav>
   </div>
+</header>
 
-  <script>
-    (function(){
-      const navBtns = document.querySelectorAll('a.nav-btn');
-      navBtns.forEach(btn=>{
-        btn.addEventListener('click', ()=>{ btn.classList.add('pop'); btn.addEventListener('animationend', ()=> btn.classList.remove('pop'), {once:true}); });
-      });
-    })();
-    // Page transition enter / exit
-    (function(){
-      document.body.classList.add('page-enter');
-      requestAnimationFrame(()=> requestAnimationFrame(()=> document.body.classList.add('page-enter-active')));
-      document.addEventListener('click', e=>{
-        const a = e.target.closest('a'); if(!a) return; const href = a.getAttribute('href'); if(!href) return; const isHash = href.startsWith('#'); const isExternal = a.target === '_blank' || /^(http|https):/i.test(href) && !href.includes(location.host);
-        if(isHash || isExternal) return; e.preventDefault(); document.body.classList.add('page-exit-active'); setTimeout(()=> window.location.href = a.href, 420);
-      }, {capture:true});
-    })();
-  </script>
+<div class="wrap">
+  <div class="card" role="main">
+    <h1>About</h1>
+    <p>Hi, I’m a Cybersecurity Engineer passionate about keeping systems secure and people safe online. I enjoy breaking down complex security problems and turning them into practical, effective solutions.</p>
+    <p>I’m especially interested in how attackers think, how systems fail, and how strong security design can prevent incidents before they happen. Outside of work, I like learning about new security tools, staying up to date with cyber threats, and improving my skills.</p>
+
+    <div class="certs" aria-labelledby="certs-heading">
+      <h3 id="certs-heading">Certificates</h3>
+      <div class="cert-list">
+        <div class="cert">CCNA — Introduction to Networking</div>
+        <div class="cert">CompTIA A+ (Cyber)</div>
+      </div>
+    </div>
+
+    <a class="home-link" href="index.html">← Back to Home</a>
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById('nav-links').classList.toggle('show');
+}
+
+// Nav button pop animation
+document.querySelectorAll('a.nav-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> {
+    btn.classList.add('pop');
+    btn.addEventListener('animationend', ()=> btn.classList.remove('pop'), {once:true});
+  });
+});
+
+// Optional: page transition
+document.body.classList.add('page-enter');
+requestAnimationFrame(()=> requestAnimationFrame(()=> document.body.classList.add('page-enter-active')));
+document.addEventListener('click', e=>{
+  const a = e.target.closest('a'); 
+  if(!a) return; 
+  const href = a.getAttribute('href'); 
+  if(!href) return; 
+  const isHash = href.startsWith('#'); 
+  const isExternal = a.target === '_blank' || /^(http|https):/i.test(href) && !href.includes(location.host);
+  if(isHash || isExternal) return; 
+  e.preventDefault(); 
+  document.body.classList.add('page-exit-active'); 
+  setTimeout(()=> window.location.href = a.href, 420);
+},{capture:true});
+</script>
+
 </body>
 </html>
