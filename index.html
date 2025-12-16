@@ -1,312 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ali Seyfullazade — Cybersecurity Engineer</title>
-
   <style>
     :root{
       --bg:#06070a;
-      --panel:#0f1720;
-      --text:#ffffff;
+      --text:#fff;
       --muted:#99a3b2;
       --accent:#2b8cff;
       --max-width:1100px;
     }
 
     *{box-sizing:border-box;}
-    html, body {margin:0; padding:0;}
+    body{margin:0;padding:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh;}
 
-    body{
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
-      background: linear-gradient(180deg,var(--bg),#0b0f14);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* HEADER */
     header{
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(6px);
-      padding: 12px 16px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .nav-wrap{
-      width:100%;
-      max-width:var(--max-width);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap: wrap;
-      gap: 12px;
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(6px);
+      background:rgba(6,7,10,0.95);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:12px 16px;
     }
 
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
+      display:flex;align-items:center;gap:12px;
     }
+    .avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;}
+    .avatar img{width:100%;height:100%;object-fit:cover;}
+    .name{font-weight:700;font-size:16px;}
+    .role{font-size:12px;color:var(--muted);}
 
-    .avatar{
-      width:64px;
-      height:64px;
-      border-radius:50%;
-      overflow:hidden;
-      background:#111;
+    /* Hamburger */
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      gap:5px;
+      cursor:pointer;
     }
-
-    .avatar img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+    .hamburger div{
+      width:25px;
+      height:3px;
+      background:var(--text);
     }
-
-    .name{font-weight:700;font-size:18px;}
-    .role{font-size:14px;color:var(--muted);}
 
     nav ul{
       list-style:none;
       display:flex;
       gap:12px;
-      padding:0;
-      margin:0;
-      flex-wrap: wrap;
+      padding:0;margin:0;
     }
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600;font-size:14px;}
+    nav a:hover{color:var(--text);background:rgba(255,255,255,0.05);}
 
-    nav a{
-      color:var(--muted);
-      text-decoration:none;
-      padding:8px 12px;
-      border-radius:8px;
-      font-weight:600;
-      font-size:15px;
-    }
-
-    nav a:hover{
-      color:var(--text);
-      background:rgba(255,255,255,0.05);
-    }
-
-    /* MAIN */
     main{
-      flex: 1;
+      flex:1;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 40px 24px;
-    }
-
-    .hero{
+      padding:40px 16px;
       text-align:center;
-      max-width:90%;
     }
-
-    .headline{
-      font-size:clamp(32px,7vw,88px);
-      font-weight:900;
-      margin:0;
-    }
-
-    .subhead{
-      margin-top:12px;
-      font-size:clamp(14px,2vw,20px);
-      color:var(--muted);
-    }
-
+    .hero{max-width:90%;}
+    .headline{font-size:clamp(24px,7vw,48px);font-weight:900;margin:0;}
+    .subhead{margin-top:12px;font-size:clamp(12px,3vw,16px);color:var(--muted);}
     .repo-link{
-      margin-top: 28px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 20px;
-      border-radius: 14px;
-      font-weight:600;
-      color: var(--text);
-      text-decoration: none;
-      background: linear-gradient(
-        135deg,
-        rgba(43,140,255,0.18),
-        rgba(43,140,255,0.08)
-      );
-      border: 1px solid rgba(43,140,255,0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;font-weight:600;color:var(--text);text-decoration:none;margin-top:16px;
+      background:linear-gradient(135deg,rgba(43,140,255,0.18),rgba(43,140,255,0.08));
+      border:1px solid rgba(43,140,255,0.35);
     }
 
-    .repo-link svg{
-      width: 20px;
-      height: 20px;
-    }
-
-    .repo-link:hover{
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(43,140,255,0.25);
-    }
-
-    /* FOOTER */
     footer{
-      max-width:var(--max-width);
-      margin: 0 auto 24px;
-      padding: 18px 24px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap: wrap;
-      border-radius:12px;
-      background: linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
-      gap:12px;
-    }
-
-    .footer-left{
-      font-size:14px;
+      padding:16px;
+      text-align:center;
+      font-size:12px;
       color:var(--muted);
-    }
-
-    .social{
-      display:flex;
-      gap:12px;
-      flex-wrap: wrap;
-    }
-
-    .social a{
-      width:40px;
-      height:40px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.05);
-      color:var(--text);
-      transition: transform 0.2s ease;
-    }
-
-    .social a:hover{
-      transform:translateY(-3px);
-    }
-
-    .social svg{
-      width:20px;
-      height:20px;
     }
 
     /* MEDIA QUERIES */
-    @media (max-width: 1024px){
-      nav a{font-size:14px;padding:6px 10px;}
-      .avatar{width:56px;height:56px;}
-      .headline{font-size:clamp(28px,6vw,72px);}
-      .subhead{font-size:clamp(14px,2.5vw,18px);}
-      .repo-link{padding:10px 16px;}
-    }
-
-    @media (max-width: 768px){
-      .nav-wrap{flex-direction: column; align-items: center;}
-      nav ul{flex-direction: column; gap:8px;}
-      footer{flex-direction: column; align-items: center;}
-      .repo-link{width:100%; justify-content:center;}
-      .headline{font-size:clamp(24px,7vw,64px);}
-      .subhead{font-size:clamp(12px,3vw,16px);}
-    }
-
-    @media (max-width: 480px){
-      header, footer{padding:12px;}
-      .avatar{width:48px;height:48px;}
-      .headline{font-size:clamp(20px,8vw,48px);}
-      .subhead{font-size:clamp(12px,4vw,14px);}
-      .repo-link{padding:8px 12px;}
-      .social a{width:36px;height:36px;}
-      .social svg{width:16px;height:16px;}
+    @media(max-width:768px){
+      .hamburger{display:flex;}
+      nav ul{flex-direction:column;display:none;width:100%;gap:8px;margin-top:8px;}
+      nav ul.show{display:flex;}
+      nav a{padding:10px;display:block;}
     }
   </style>
 </head>
-
 <body>
 
 <header>
-  <div class="nav-wrap">
-    <div class="brand">
-      <div class="avatar">
-        <img src="picture.jpg" alt="Ali Seyfullazade">
-      </div>
-      <div>
-        <div class="name">Ali Seyfullazade</div>
-        <div class="role">Cybersecurity Engineer</div>
-      </div>
-    </div>
-
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-      </ul>
-    </nav>
+  <div class="brand">
+    <div class="avatar"><img src="picture.jpg" alt="Ali Seyfullazade"></div>
+    <div><div class="name">Ali Seyfullazade</div><div class="role">Cybersecurity Engineer</div></div>
   </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+  <nav>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main>
   <section class="hero">
     <h1 class="headline">Hi, I’m Ali Seyfullazade</h1>
     <p class="subhead">A Cybersecurity Engineer based in Baku</p>
-    <a href="https://github.com/aseyfullazade"
-       class="repo-link"
-       target="_blank"
-       rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path fill="currentColor"
-          d="M12 .5C5.73.5.5 5.74.5 12.03c0 5.1 3.29 9.43 7.86 10.96
-          .58.11.79-.25.79-.56v-2.02c-3.2.7-3.88-1.55-3.88-1.55
-          -.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72
-          1.17.08 1.79 1.2 1.79 1.2
-          1.04 1.78 2.73 1.27 3.4.97
-          .11-.75.41-1.27.74-1.56
-          -2.55-.29-5.23-1.28-5.23-5.68
-          0-1.25.45-2.27 1.19-3.07
-          -.12-.29-.52-1.46.11-3.04
-          0 0 .97-.31 3.18 1.17
-          .92-.26 1.91-.39 2.89-.39
-          .98 0 1.97.13 2.89.39
-          2.2-1.48 3.17-1.17 3.17-1.17
-          .63 1.58.23 2.75.11 3.04
-          .74.8 1.18 1.82 1.18 3.07
-          0 4.41-2.69 5.38-5.25 5.67
-          .42.36.79 1.08.79 2.18v3.25
-          c0 .31.21.68.8.56
-          4.56-1.53 7.85-5.86 7.85-10.96
-          C23.5 5.74 18.27.5 12 .5z"/>
-      </svg>
+    <a href="https://github.com/aseyfullazade" class="repo-link" target="_blank" rel="noopener noreferrer">
       View Repository
     </a>
   </section>
 </main>
 
 <footer>
-  <div class="footer-left">
-    © <span id="year"></span> Ali Seyfullazade · Cybersecurity Engineer
-  </div>
-
-  <div class="social">
-    <a href="https://github.com/aseyfullazade" target="_blank" aria-label="GitHub">
-      <svg viewBox="0 0 24 24">
-        <path fill="currentColor" d="M12 .5C5.73.5.5 5.74.5 12.03c0 5.1 3.29 9.43 7.86 10.96 ..."/>
-      </svg>
-    </a>
-    <a href="https://www.codecademy.com/profiles/object0988416252" target="_blank" aria-label="Codecademy">
-      <svg viewBox="0 0 24 24">
-        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 ..."/>
-      </svg>
-    </a>
-  </div>
+  © <span id="year"></span> Ali Seyfullazade · Cybersecurity Engineer
 </footer>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+  function toggleMenu(){
+    document.getElementById("nav-links").classList.toggle("show");
+  }
 </script>
 
 </body>
 </html>
+
